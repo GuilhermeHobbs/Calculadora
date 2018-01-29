@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+
+$(document).ready(function(){
+
+  $(".tecla").click(function (e) {
+
+    var digito = e.target.value;
+    var valor = $("#visor").val();
+
+    if (String(valor).length > 10) return; // Se excedeu o visor, ignora
+
+    if (Number(digito) || digito === '0') $("#visor").val(valor + String(digito));
+
+    else {
+
+      if (!Number( valor.slice(-1) ) && valor.slice(-1) != '0') return; // Se o último caracter no visor não for um dígito, ignora (para evitar +-, .+ etc)
+      else $("#visor").val( $("#visor").val() + digito);
+
+    }
+  });
+
+
+$(".tecla_igual").click(function (e) {
+  var strTemp;
+  var result = eval($("#visor").val()); // faz a conta via eval
+  if (result > 99999999) {  // Se o resultado vai exceder o visor . . .
+    strTemp = String(result).split('');
+    strTemp.splice(result.length - 3, 3, '.', '.', '.'); // colocar ... no final e
+    strTemp.reverse();
+    result = strTemp.join('');
+    $(".tecla, .tecla_igual").css("visibility", "hidden"); // bloqueia as teclas
+  }
+
+  else if (!Number.isInteger(result)) result = Number(result).toFixed(3); // para evitar 1.3333333333333333333333
+
+  $("#visor").val(result);
+
+});
+
+$(".tecla_clear").click(function (e) {
+  $("#visor").val ("");
+  $(".tecla, .tecla_igual").css("visibility", "visible"); // restaura as teclas caso estivessem ocultadas
+});
+
+});
+
+</script>
+
+<link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body>
+
+  <div class="calculadora">
+
+  	<input id="visor" placeholder="0" maxlength="11">
+
+  	<div class="teclas">
+  		<button type="button" class="tecla" value="7">7</button>
+  		<button type="button" class="tecla" value="8">8</button>
+  		<button type="button" class="tecla" value="9">9</button>
+  		<button type="button" class="tecla" value="+">+</button>
+  		<button type="button" class="tecla" value="4">4</button>
+  		<button type="button" class="tecla" value="5">5</button>
+  		<button type="button" class="tecla" value="6">6</button>
+  		<button type="button" class="tecla" value="-">-</button>
+  		<button type="button" class="tecla" value="1">1</button>
+  		<button type="button" class="tecla" value="2">2</button>
+  		<button type="button" class="tecla" value="3">3</button>
+  		<button type="button" class="tecla" value="/">/</button>
+  		<button type="button" class="tecla" value="0">0</button>
+  		<button type="button" class="tecla" value=".">.</button>
+  		<button type="button" class="tecla_igual">=</button>
+  		<button type="button" class="tecla" value="*">*</button>
+  	</div>
+    <button type="button" class="tecla_clear">Clear</button>
+  </div>
+
+
+</body>
+</html>

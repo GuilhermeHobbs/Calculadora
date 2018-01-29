@@ -1,0 +1,76 @@
+@font-face {
+    font-family: Gretoon;
+    src: url(comic.ttf);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Gretoon', Arial, sans-serif;
+	font-size:22px;
+}
+
+.calculadora {
+  max-width: 200px;
+  margin: 20px auto;
+}
+
+#visor {
+  border: 1px solid grey;
+  height: 25px;
+  margin-bottom: 5px;
+  padding: 5px;
+  text-align: right;
+  width: 100%;
+}
+
+.teclas {
+  height: 235px;
+  margin-left: 13px;
+}
+
+.tecla, .tecla_igual {
+    width: 20%;
+    display: block;
+    float: left;
+  	height: 50px;
+  	border-radius:3px;
+  	color:#fff;
+  	background-color:#6C73FA;
+  	cursor:pointer;
+  	margin: 0px 4px 8px;
+  	line-height: 30px;
+  	text-align: center;
+  	box-shadow: 0px 3px 1px 0px #444651;
+  }
+  .tecla:hover, .tecla_igual:hover {
+  	background-color: #BEF9F0;
+  	color: #6C73FA;
+  	transition:0.2s;
+  }
+  .tecla:active, .tecla_igual:active{
+  	box-shadow: 0px 1px 1px 0px #444651;
+  }
+
+.tecla_clear {
+  width: 80%;
+  margin-left: 25px;
+  line-height: 30px;
+  text-align: center;
+  box-shadow: 0px 3px 1px 0px #444651;
+  cursor:pointer;
+  height: 30px;
+  border-radius:3px;
+  background-color:#6C73FA;
+  display: block;
+}
+
+.tecla_clear:hover, .tecla_clear:hover {
+  background-color: #BEF9F0;
+  color: #6C73FA;
+  transition:0.2s;
+}
+
+.tecla_clear:active, .tecla_clear:active{
+  box-shadow: 0px 1px 1px 0px #444651;
+}
